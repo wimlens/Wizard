@@ -34,13 +34,17 @@ class DuellingClub {
     private Wizard fight() {
         do {
             attackingWizard.fireSpellAt(defendingWizard);
-            if (defendingWizardIsDefeated()) {
-                winner = attackingWizard;
-            }
+            checkThatAttackerWonDuel();
             defenderBecomesAttacker();
         } while (bothWizardsAreStillStanding());
 
         return winner;
+    }
+
+    private void checkThatAttackerWonDuel() {
+        if (defendingWizardIsDefeated()) {
+            winner = attackingWizard;
+        }
     }
 
     private boolean defendingWizardIsDefeated() {
@@ -48,8 +52,10 @@ class DuellingClub {
     }
 
     private void defenderBecomesAttacker() {
-        attackingWizard = defendingWizard;
-        defendingWizard = attackingWizard;
+        if (winner == null) {
+            attackingWizard = defendingWizard;
+            defendingWizard = attackingWizard;
+        }
     }
 
     private boolean bothWizardsAreStillStanding() {
