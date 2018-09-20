@@ -8,17 +8,18 @@ class DuellingClub {
 
     private Wizard attackingWizard;
     private Wizard defendingWizard;
+    private Wizard winner;
 
     Wizard duel(Wizard a, Wizard b) {
         this.attackingWizard = a;
         this.defendingWizard = b;
         introduceBothWizards();
-        Wizard winner = fight();
-        congratsWinner(winner);
+        winner = fight();
+        congratsWinner();
         return winner;
     }
 
-    private void congratsWinner(Wizard winner) {
+    private void congratsWinner() {
         StringBuilder sb = new StringBuilder();
 
         sb.append("\n");
@@ -31,14 +32,15 @@ class DuellingClub {
     }
 
     private Wizard fight() {
-        while (bothWizardsAreStillStanding()){
+        do {
             attackingWizard.fireSpellAt(defendingWizard);
             if (defendingWizardIsDefeated()) {
-                return attackingWizard;
+                winner = attackingWizard;
             }
             defenderBecomesAttacker();
-        }
-        return null;
+        } while (bothWizardsAreStillStanding());
+
+        return winner;
     }
 
     private boolean defendingWizardIsDefeated() {
