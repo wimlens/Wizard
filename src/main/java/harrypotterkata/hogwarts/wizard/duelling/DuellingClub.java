@@ -11,9 +11,7 @@ class DuellingClub {
     private Wizard winner;
 
     Wizard duel(Wizard a, Wizard b) {
-        this.attackingWizard = a;
-        this.defendingWizard = b;
-        introduceBothWizards();
+        introduceBothWizards(a, b);
         winner = fight();
         congratsWinner();
         return winner;
@@ -62,7 +60,9 @@ class DuellingClub {
         return attackingWizard.getHp() > 0 && defendingWizard.getHp() > 0;
     }
 
-    private void introduceBothWizards() {
+    private void introduceBothWizards(Wizard a, Wizard b) {
+        this.attackingWizard = a;
+        this.defendingWizard = b;
         StringBuilder sb = new StringBuilder();
 
         sb.append("Welcome, wizards of Hogwarts, at the duelling club!");
