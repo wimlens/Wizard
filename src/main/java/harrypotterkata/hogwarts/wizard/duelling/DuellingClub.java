@@ -4,12 +4,12 @@ import harrypotterkata.hogwarts.wizard.Wizard;
 
 import static java.lang.String.format;
 
-public class DuellingClub {
+class DuellingClub {
 
     private Wizard attackingWizard;
     private Wizard defendingWizard;
 
-    public Wizard duel(Wizard a, Wizard b) {
+    Wizard duel(Wizard a, Wizard b) {
         this.attackingWizard = a;
         this.defendingWizard = b;
         introduceBothWizards();

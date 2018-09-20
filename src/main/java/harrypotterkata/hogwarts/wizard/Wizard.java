@@ -44,7 +44,7 @@ public class Wizard {
         return randomSpell;
     }
 
-    public void updateHealth(int newHP) {
+    private void updateHealth(int newHP) {
         this.hp = newHP;
         System.out.println(getName() + " has " + getHp() + " HP left");
     }
