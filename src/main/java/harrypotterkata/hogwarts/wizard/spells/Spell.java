@@ -61,9 +61,4 @@ public enum Spell {
         return damage;
     }
 
-    public void applyTo(Wizard victim) {
-        int victimHp = victim.getHp();
-        victimHp -= getDamage();
-        victim.updateHealth(max(0, victimHp));
-    }
 }
