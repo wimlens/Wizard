@@ -1,5 +1,6 @@
 package harrypotterkata.hogwarts.wizard.spells;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;

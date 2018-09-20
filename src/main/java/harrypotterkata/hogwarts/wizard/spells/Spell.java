@@ -1,10 +1,13 @@
 package harrypotterkata.hogwarts.wizard.spells;
 
+import harrypotterkata.hogwarts.wizard.Wizard;
 import harrypotterkata.hogwarts.wizard.random.RandomEnum;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.lang.Integer.max;
 
 public enum Spell {
 
@@ -56,5 +59,11 @@ public enum Spell {
 
     public int getDamage() {
         return damage;
+    }
+
+    public void applyTo(Wizard victim) {
+        int victimHp = victim.getHp();
+        victimHp -= getDamage();
+        victim.updateHealth(max(0, victimHp));
     }
 }
