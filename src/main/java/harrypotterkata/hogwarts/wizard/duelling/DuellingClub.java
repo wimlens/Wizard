@@ -50,9 +50,11 @@ class DuellingClub {
     }
 
     private void defenderBecomesAttacker() {
+        Wizard previousAttacker = attackingWizard;
+        Wizard previousDefender = defendingWizard;
         if (winner == null) {
-            attackingWizard = defendingWizard;
-            defendingWizard = attackingWizard;
+            attackingWizard = previousDefender;
+            defendingWizard = previousAttacker;
         }
     }
 

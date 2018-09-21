@@ -15,6 +15,7 @@ public class DuellingClubTest {
 
         Wizard winner = new DuellingClub().duel(theAlmightyDumbledore, heWhoMustNotBeNamed);
 
+        assertThat(winner.getHp()).isPositive();
         if (winner.equals(theAlmightyDumbledore)) {
             assertThat(winner.getName()).isEqualTo("Dumbledore");
         } else {

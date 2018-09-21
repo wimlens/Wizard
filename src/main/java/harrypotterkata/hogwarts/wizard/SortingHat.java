@@ -7,6 +7,8 @@ public class SortingHat {
         House house = getRandom(House.class);
 
         StringBuilder sb = new StringBuilder();
+        sb.append("Sorting Hat:");
+        sb.append("\n");
         sb.append("Hmm, who do we have here?");
         sb.append("\n");
         sb.append("Ah, I see, it's " + wizardName);
