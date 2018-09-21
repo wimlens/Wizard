@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.Integer.max;
-
 public enum Spell {
 
     CONFRINGO("attacking", 10),
@@ -61,4 +59,21 @@ public enum Spell {
         return damage;
     }
 
+    private String getKindOfSpell() {
+        return kindOfSpell;
+    }
+
+    public void applyTo(Wizard summoningWizard, Wizard opponent) {
+        switch (getKindOfSpell()){
+            case "defensive" :
+                summoningWizard.protectUsing(this);
+                break;
+            case "unforgivable" :
+                opponent.defendAgainst(this);
+                summoningWizard.scarOwnSoul();
+                break;
+            default:
+                opponent.defendAgainst(this);
+        }
+    }
 }

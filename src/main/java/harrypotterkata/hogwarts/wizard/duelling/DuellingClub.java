@@ -31,7 +31,7 @@ class DuellingClub {
 
     private Wizard fight() {
         do {
-            attackingWizard.fireSpellAt(defendingWizard);
+            attackingWizard.summonSpell(defendingWizard);
             checkThatAttackerWonDuel();
             defenderBecomesAttacker();
         } while (bothWizardsAreStillStanding());

@@ -6,6 +6,7 @@ public class Wizard {
     private String name;
     private int hp;
     private House houseOfHogwarts;
+    private Spell protectiveSpell;
 
     private Wizard(String name) {
         this.name = name;
@@ -29,13 +30,22 @@ public class Wizard {
         return houseOfHogwarts;
     }
 
-    public void fireSpellAt(Wizard opponent) {
+    public void summonSpell(Wizard opponent) {
         Spell spell = chooseSpell();
-        opponent.defendAgainst(spell);
+        spell.applyTo(this, opponent);
     }
 
-    private void defendAgainst(Spell spell) {
-        updateHealth( Integer.max(0,  getHp() - spell.getDamage()));
+    public void defendAgainst(Spell spell) {
+        if (hasProtection()) {
+            System.out.println(name + " is protected by " + getProtectiveSpell().name() + "! No damage done, smart cookie!");
+            protectiveSpell = null;
+        } else {
+            updateHealth( Integer.max(0,  getHp() - spell.getDamage()));
+        }
+    }
+
+    private boolean hasProtection() {
+        return getProtectiveSpell() != null;
     }
 
     private Spell chooseSpell() {
@@ -47,5 +57,18 @@ public class Wizard {
     private void updateHealth(int newHP) {
         this.hp = newHP;
         System.out.println(getName() + " has " + getHp() + " HP left");
+    }
+
+    public void protectUsing(Spell spell) {
+        protectiveSpell = spell;
+    }
+
+    private Spell getProtectiveSpell() {
+        return protectiveSpell;
+    }
+
+    public void scarOwnSoul() {
+        System.out.println(getName() + " used an unforgivable curse! That will scar his soul");
+        updateHealth(Integer.max(0,  getHp() - 10));
     }
 }

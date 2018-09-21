@@ -1,5 +1,6 @@
 package harrypotterkata.hogwarts.wizard.spells;
 
+import harrypotterkata.hogwarts.wizard.Wizard;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -43,5 +44,14 @@ public class SpellTest {
         horribleUnforgivableSpells.add(AVADA_KEDAVRA);
 
         assertThat(Spell.getHorribleUnforgivableSpells()).isEqualTo(horribleUnforgivableSpells);
+    }
+
+    @Test
+    public void unforgivableSpellHurtsSummoningWizard() throws Exception {
+        Wizard draco = Wizard.createWizardlyWizard("Draco Malfoy");
+        Wizard hermione = Wizard.createWizardlyWizard("Hermione Granger");
+        AVADA_KEDAVRA.applyTo(draco, hermione);
+
+        assertThat(draco.getHp()).isEqualTo(90);
     }
 }
